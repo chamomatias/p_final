@@ -5,11 +5,11 @@ from django.http import HttpResponse
 def inicio(request):
     return render(request, 'app/inicio.html')
 
-def Cursos(request):
-    return render(request, 'app/Cursos.html')
+def portfolio(request):
+    return render(request, 'app/portfolio.html')
 
-def acerca_de_mi(request):
-    return render(request, 'app/acerca_de_mi.html')
+def sobre_mi(request):
+    return render(request, 'app/sobre_mi.html')
 
-def Contactos(request):
-    return render(request, 'app/Contactos.html')
+def contacto(request):
+    return render(request, 'app/contacto.html')
