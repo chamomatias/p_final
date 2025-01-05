@@ -1,6 +1,8 @@
 from django.shortcuts import  render, redirect
 from app.models import contacto
 from app.models import portfolio
+
+
 from app.forms import PortfolioFormulario
 
 
@@ -28,22 +30,15 @@ def contacto_view(request):
 
 
 
-def portfolio(request):  # Cambié el nombre para evitar conflicto con el modelo `portfolio`
-    return render(request, 'app/portfolio.html')
 
 
-def form_con_api(request):
+def portfolio(request):
     if request.method == "POST":
-        mi_formulario = PortfolioFormulario(request.POST) # Aqui me llega la informacion del html
-        # print(miFormulario)
-        if mi_formulario.is_valid():
-            informacion = mi_formulario.cleaned_data
-            
-            curso = Curso(nombre=informacion["curso"], descripcion=informacion["descripcion"])
-            curso.save()
-
-            return render(request, "app/inicio.html")
+        form = PortfolioFormulario(request.POST)
+        if form.is_valid():
+            form.save()  # Guarda los datos en la tabla `portfolio`
+            return redirect("portfolio")  # Redirige después de guardar
     else:
-        mi_formulario = PortfolioFormulario()
+        form = PortfolioFormulario()
 
-    return render(request, "app/form_con_api.html", {"mi_formulario": mi_formulario})
+    return render(request, 'app/portfolio.html', {'form': form})
