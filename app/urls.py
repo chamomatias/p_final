@@ -1,9 +1,15 @@
 from django.urls import path
 from app import views
+from app.views import portfolio, contacto_view
+
 
 urlpatterns = [
-    path('inicio/', views.inicio, name='inicio'),
-    path('portfolio/', views.portfolio, name='portfolio'),
+    path('', views.inicio, name='inicio'),
     path('sobre_mi/', views.sobre_mi, name='sobre_mi'),
-    path('contacto/', views.contacto, name='contacto'),
 ]
+
+form_html = [
+    path('contacto/', contacto_view, name='contacto'),
+    path('portfolio/', portfolio, name='portfolio'),
+]
+urlpatterns += form_html
