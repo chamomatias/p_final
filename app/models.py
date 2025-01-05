@@ -3,9 +3,11 @@ from django.db import models
 # Create your models here.
 class portfolio(models.Model):
     nombre = models.CharField(max_length=50)
-    descripcion = models.TextField()
+    descripcion = models.CharField(max_length=100)
+
     def __str__(self):
         return f"Nombre: {self.nombre} | Descripcion: {self.descripcion}"
+
 
 class contacto(models.Model):
     nombre = models.CharField(max_length=50)
