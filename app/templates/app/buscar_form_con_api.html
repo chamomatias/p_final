@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block title %} Buscar Curso {% endblock title %}
+
+{% block main %}
+
+    <h1>Buscar Curso</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ mi_formulario.as_table }}
+        </table>
+        <input type="submit" value="Enviar">
+
+    </form>
+{% endblock main %}

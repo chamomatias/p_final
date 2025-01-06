@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block title %} Inicio {% endblock title %}
+
+{% block main %}
+
+
+{% for nombre in nombres %}
+    <li>nombre: {{ nombre.nombre }} | Camada: {{ nombre.camada }}</li>
+{% endfor %}
+
+
+{% endblock main %}
+

@@ -2,8 +2,8 @@ from django.shortcuts import  render, redirect
 from app.models import contacto
 from app.models import portfolio
 
-
 from app.forms import PortfolioFormulario
+from app.forms import BuscaCursoForm
 
 
 
@@ -42,3 +42,20 @@ def portfolio(request):
         form = PortfolioFormulario()
 
     return render(request, 'app/portfolio.html', {'form': form})
+
+
+
+def buscar_form_con_api(request):
+    if request.method == "POST":
+        mi_formulario = BuscaCursoForm(request.POST) # Aqui me llega la informacion del html
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            
+            nombres = contacto.objects.filter(nombre__icontains=informacion["nombre"])
+
+            return render(request, "app/mostrar_cursos.html", {"nombres": nombres})
+    else:
+        mi_formulario = BuscaCursoForm()
+
+    return render(request, "app/buscar_form_con_api.html", {"mi_formulario": mi_formulario})

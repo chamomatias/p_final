@@ -11,5 +11,8 @@ urlpatterns = [
 form_html = [
     path('contacto/', contacto_view, name='contacto'),
     path('portfolio/', portfolio, name='portfolio'),
+    path('buscar-form-con-api/', views.buscar_form_con_api, name="Buscar_Form_Con_Api"),
 ]
+
+
 urlpatterns += form_html
