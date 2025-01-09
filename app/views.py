@@ -16,6 +16,14 @@ def sobre_mi(request):
     """
     return render(request, 'app/sobre_mi.html')
 
+# Vista para la página "Sobre nosotros"
+def sobre_nosotros(request):
+    """
+    Renderiza la página 'Sobre nosotros'.
+    """
+    return render(request, 'app/sobre_nosotros.html')
+
+
 # Vista para manejar el formulario de contacto
 def contacto_view(request):
     """

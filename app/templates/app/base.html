@@ -28,10 +28,47 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'sobre_nosotros'%}">Sobre nosotros</a></li>                        
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'sobre_mi'%}">Sobre mi</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'portfolio'%}">Portfolio</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'contacto'%}">Contacto</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Logout'%}">Logout</a></li>
+
+
+                        {# DROPDOWN PARA LA CUENTA DE USUARIO #}
+                        {% if request.user.is_authenticated %}
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ request.user.username }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+
+                        {% else %}
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cuenta
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{% url 'Login' %}">Inciar Sesión</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Register' %}">Crear cuenta</a></li>
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        {# FIN DROPDOWN PARA LA CUENTA DE USUARIO #}                        
+
+
+
+
+                        {% comment %} {% if request.user.is_authenticated %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Logout'%}">Cerrar sesión</a></li>
+                        {% else %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Login'%}">Iniciar sesión</a></li>
+                        {% endif %} {% endcomment %}
                     </ul>
                 </div>
             </div>
