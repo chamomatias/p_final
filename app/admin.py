@@ -1,11 +1,11 @@
 from django.contrib import admin
-from app.models import portfolio, contacto
+from app.models import Portfolio, Contacto
 
-# Registro del modelo "portfolio" en el administrador de Django
-@admin.register(portfolio)
-class portfolioAdmin(admin.ModelAdmin):
+# Registro del modelo "Portfolio" en el administrador de Django
+@admin.register(Portfolio)
+class PortfolioAdmin(admin.ModelAdmin):
     """
-    Configuración de la interfaz de administración para el modelo 'portfolio'.
+    Configuración de la interfaz de administración para el modelo 'Portfolio'.
     """
     list_display = ('id', 'nombre', 'descripcion')  # Campos mostrados en la lista de objetos
     ordering = ('id',)  # Orden predeterminado por el campo 'id'
@@ -13,11 +13,11 @@ class portfolioAdmin(admin.ModelAdmin):
     list_filter = ('nombre',)  # Habilita filtros por el campo 'nombre'
     list_editable = ('nombre', 'descripcion')  # Permite editar los campos directamente en la lista
 
-# Registro del modelo "contacto" en el administrador de Django
-@admin.register(contacto)
-class contactoAdmin(admin.ModelAdmin):
+# Registro del modelo "Contacto" en el administrador de Django
+@admin.register(Contacto)
+class ContactoAdmin(admin.ModelAdmin):
     """
-    Configuración de la interfaz de administración para el modelo 'contacto'.
+    Configuración de la interfaz de administración para el modelo 'Contacto'.
     """
     list_display = ('id', 'nombre', 'email', 'telefono', 'mensaje')  # Campos mostrados en la lista de objetos
     ordering = ('id',)  # Orden predeterminado por el campo 'id'

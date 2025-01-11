@@ -1,6 +1,6 @@
 from django.urls import path
 from app import views
-from app.views import portfolio, contacto_view
+from app.views import portfolio, contacto_view, registrar_contacto, gracias
 
 # URL patterns principales
 urlpatterns = [
@@ -11,7 +11,9 @@ urlpatterns = [
 
 # URL patterns adicionales relacionados con formularios
 form_html = [
-    path('contacto/', contacto_view, name='contacto'),  # Ruta para la vista de contacto
+    path('contacto/', views.registrar_contacto, name='registrar_contacto'),
+    path('gracias/', views.gracias, name='gracias'),  
+#    path('contacto/', contacto_view, name='contacto'),  # Ruta para la vista de contacto
     path('portfolio/', portfolio, name='portfolio'),  # Ruta para la vista de portafolios
     path('buscar-form-con-api/', views.buscar_form_con_api, name="Buscar_Form_Con_Api"),  # Ruta para buscar formularios usando una API
 ]

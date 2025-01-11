@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
-from app.models import contacto, portfolio
+from app.models import Contacto, Portfolio
 from app.forms import PortfolioFormulario, BuscaCursoForm
+from django.http import HttpResponseRedirect
+
+
 
 # Vista para la página de inicio
 def inicio(request):
@@ -62,6 +65,35 @@ def portfolio(request):
 
     # Renderiza la página del portafolio
     return render(request, 'app/portfolio.html', {'form': form})
+
+
+
+
+def registrar_contacto(request):
+    if request.method == "POST":
+        nombre = request.POST.get("nombre")
+        email = request.POST.get("email")
+        telefono = request.POST.get("telefono")
+        mensaje = request.POST.get("mensaje")
+
+        # Guarda los datos en la base de datos
+        nuevo_contacto = Contacto(
+            nombre=nombre,
+            email=email,
+            telefono=telefono,
+            mensaje=mensaje,
+        )
+        nuevo_contacto.save()
+
+        # Redirige a una página de éxito (o al mismo formulario)
+        return HttpResponseRedirect('/gracias/')  # Ajusta la URL según sea necesario
+
+    return render(request, 'app/inicio.html')
+
+def gracias(request):
+    return render(request, 'app/gracias.html')
+
+
 
 # Vista para buscar cursos mediante un formulario
 def buscar_form_con_api(request):

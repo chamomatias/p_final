@@ -1,5 +1,5 @@
 from django import forms
-from app.models import portfolio
+from app.models import Portfolio
 
 # Formulario basado en modelo para el modelo "portfolio"
 class PortfolioFormulario(forms.ModelForm):
@@ -7,7 +7,7 @@ class PortfolioFormulario(forms.ModelForm):
     Formulario para gestionar el modelo 'portfolio' utilizando un formulario basado en modelo.
     """
     class Meta:
-        model = portfolio  # Modelo asociado
+        model = Portfolio  # Modelo asociado
         fields = ['nombre', 'descripcion']  # Campos incluidos en el formulario
 
 # Formulario general para buscar cursos
