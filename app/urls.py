@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.inicio, name='inicio'),  # Ruta para la página de inicio
     path('sobre_mi/', views.sobre_mi, name='sobre_mi'),  # Ruta para la página "Sobre mí"
     path('sobre_nosotros/', views.sobre_nosotros, name='sobre_nosotros'),  # Ruta para la página "Sobre mí"
+    path('contactos_VBC/',views.ContactosListView.as_view()),  # Ruta para la página de contactos
 ]
 
 # URL patterns adicionales relacionados con formularios

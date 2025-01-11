@@ -116,3 +116,14 @@ def buscar_form_con_api(request):
 
     # Renderiza la página de búsqueda con el formulario
     return render(request, "app/buscar_form_con_api.html", {"mi_formulario": mi_formulario})
+
+
+
+
+from django.views.generic import ListView
+
+class ContactosListView(ListView):
+    model = Contacto
+    context_object_name = "contactos"  # Nombre de la variable en la plantilla
+    template_name = "app/contactos_VBC.html"
+    
